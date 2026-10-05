@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kaviyarasan A - Lead / Staff Software Engineer</title>
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --accent: #38bdf8;
+            --accent-gradient: linear-gradient(135deg, #38bdf8 0%, #818cf8 100%);
+            --border: #334155;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.25rem;
+            color: var(--text-primary);
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--accent);
+        }
+
+        section {
+            padding: 2% 5% 1.5rem 2%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 1.5rem;
+        }
+
+        .badge {
+            background: rgba(56, 189, 248, 0.1);
+            color: var(--accent);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            border: 1px solid rgba(56, 189, 248, 0.2);
+        }
+
+        h1 {
+            font-size: clamp(2.0rem, 4vw, 4rem);
+            font-weight: 800;
+            line-height: 1.1;
+        }
+
+        h1 span {
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+        }
+
+        .cta-group {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .btn {
+            padding: 0.75rem 1.75rem;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: var(--bg-color);
+        }
+
+        .btn-primary:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            border: 1px solid var(--border);
+            color: var(--text-primary);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            font-weight: 700;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .skill-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+        }
+
+        .skill-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.75rem;
+            color: var(--accent);
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tag {
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-secondary);
+            padding: 0.3rem 0.7rem;
+            border-radius: 6px;
+            font-size: 0.8rem;
+        }
+
+        .experience-timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            position: relative;
+            padding-left: 2rem;
+            border-left: 2px solid var(--border);
+        }
+
+        .experience-item {
+            position: relative;
+        }
+
+        .experience-item::before {
+            content: '';
+            position: absolute;
+            left: -2.35rem;
+            top: 0.25rem;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--accent);
+            border: 3px solid var(--bg-color);
+        }
+
+        .experience-item h3 {
+            font-size: 1.25rem;
+            color: var(--text-primary);
+        }
+
+        .experience-item .company {
+            color: var(--accent);
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .experience-item .duration {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.75rem;
+        }
+
+        .contact-box {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            padding: 3rem;
+            border-radius: 16px;
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .contact-box p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 0;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            border-top: 1px solid var(--border);
+            margin-top: 4rem;
+        }
+
+        @media(max-width: 768px) {
+            nav ul {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="#" class="logo">Kaviyarasan <span> Ayyappan</span></a>
+        <nav>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Expertise</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="badge">Lead / Staff Software Engineer</div>
+        <h1>Design Developing Architecting Scalable <span>Distributed Systems</span></h1>
+        <p>14+ years of enterprise experience designing high-throughput backend systems, cloud-native microservices, and fault-tolerant architectures using Java, Spring Boot, Kafka, and Kubernetes.</p>
+        <div class="cta-group">
+            <a href="#contact" class="btn btn-primary">Get in Touch</a>
+            <a href="https://www.linkedin.com/in/kaviyarasanayyappan/" target="_blank" class="btn btn-outline">LinkedIn Profile</a>
+            <a href="https://github.com/kaviking-github/" target="_blank" class="btn btn-outline">Github Profile</a>
+        </div>
+    </section>
+
+    <section id="about">
+        <h2>About Me</h2>
+        <div class="skill-card">
+            <p style="color: var(--text-secondary); font-size: 1.05rem;">
+                Staff/Lead Backend Engineer with 14+ years of expertise designing and building scalable distributed systems. Strong background in Data Structures & Algorithms, System Design, Event-Driven Architecture, Microservices, and Cloud-Native platforms on GCP and OpenShift. Proven track record of leading decisions, mentoring engineering teams, and optimizing high-performance production workloads.
+            </p>
+        </div>
+    </section>
+
+    <section id="skills">
+        <h2>Core Expertise</h2>
+        <div class="skills-grid">
+            <div class="skill-card">
+                <h3>Backend & Core</h3>
+                <div class="skill-tags">
+                    <span class="tag">Java</span>
+                    <span class="tag">Spring Boot</span>
+                    <span class="tag">Spring Security</span>
+                    <span class="tag">Object-Oriented Design</span>
+                    <span class="tag">Data Structures & Algorithms</span>
+                </div>
+            </div>
+            <div class="skill-card">
+                <h3>Distributed & Scale</h3>
+                <div class="skill-tags">
+                    <span class="tag">Microservices</span>
+                    <span class="tag">Event-Driven Architecture</span>
+                    <span class="tag">Apache Kafka</span>
+                    <span class="tag">High-Throughput Systems</span>
+                    <span class="tag">Fault-Tolerant Design</span>
+                </div>
+            </div>
+            <div class="skill-card">
+                <h3>Cloud & DevOps</h3>
+                <div class="skill-tags">
+                    <span class="tag">Google Cloud Platform (GCP)</span>
+                    <span class="tag">Kubernetes</span>
+                    <span class="tag">OpenShift</span>
+                    <span class="tag">Cloud-Native Development</span>
+                </div>
+            </div>
+            <div class="skill-card">
+                <h3>AI</h3>
+                <div class="skill-tags">
+                    <span class="tag">AI</span>
+                    <span class="tag">Microsoft Copilot</span>
+                    <span class="tag">Delphyne(code review)</span>
+                    <span class="tag">AI Agents(Langchain)</span>
+                </div>
+            </div>
+        </div>
+        
+    </section>
+
+    <section id="experience">
+        <h2>Professional Journey</h2>
+        <div class="experience-timeline">
+            <div class="experience-item">
+                <h3>Technical Lead</h3>
+                <div class="company">Hexaware Technologies</div>
+                <div class="duration">Jan 2022 - Present (Hybrid · Chennai)</div>
+                <p style="color: var(--text-secondary);">Leading cloud-native microservices architecture, enterprise application development, and technical team direction.</p>
+            </div>
+            <div class="experience-item">
+                <h3>Senior Associate</h3>
+                <div class="company">Cognizant</div>
+                <div class="duration">Mar 2019 - Dec 2021 · 2 yrs 10 mos (Chennai)</div>
+                <p style="color: var(--text-secondary);">Engineered robust RESTful services, optimized backend performance, and delivered complex enterprise deliverables.</p>
+            </div>
+            <div class="experience-item">
+                <h3>Team Lead</h3>
+                <div class="company">Chain-Sys Corporation</div>
+                <div class="duration">Apr 2018 - Mar 2019 · 1 yr (Chennai Area)</div>
+                <p style="color: var(--text-secondary);">Spearheaded backend engineering initiatives, managed code quality, and mentored developers.</p>
+            </div>
+            <div class="experience-item">
+                <h3>Senior Software Engineer & Java Developer</h3>
+                <div class="company">Chain-Sys Corporation</div>
+                <div class="duration">Jun 2012 - Mar 2018 · 5 yrs 10 mos (Chennai Area)</div>
+                <p style="color: var(--text-secondary);">Built scalable Java-based applications, handled debugging, and established robust system foundations.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="contact-box">
+            <h2>Let's Build Together</h2>
+            <p>I'm currently open to Lead, Staff, and Principal Software Engineering roles where I can drive large-scale architectural vision. Connect with me or reach out directly:</p>
+            
+            <!-- Contact Details -->
+            <div style="margin-bottom: 1.5rem; display: flex; flex-direction: column; gap: 0.5rem;">
+                <p style="margin: 0;">📧 Email: <a href="mailto:a.kavi1947@gmail.com" style="color: var(--accent); text-decoration: none;">a.kavi1947@gmail.com</a></p>
+                <p style="margin: 0;">📱 Mobile: <a href="tel:+919787727628" style="color: var(--accent); text-decoration: none;">+91 97877 27628</a></p>
+            </div>
+
+            <a href="https://www.linkedin.com/in/kaviyarasanayyappan/" target="_blank" class="btn btn-primary">Connect on LinkedIn</a>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Kaviyarasan A. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
